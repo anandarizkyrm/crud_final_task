@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/print/<%=response.id %>" target="_blank">Cetak</a>
+    <form action="/edit/<%=response.id%>?_method=PUT" method="POST" style="display: flex; flex-direction : column; width: 12rem;">
+        Nama :  <%= response.name %> <br>
+        Kode : <%= response.kode %> <br>
+        Kategori : <%= response.category %>
+
+       <a href="/">Back</a>
+    </form>
+   
+
+</body>
+</html>

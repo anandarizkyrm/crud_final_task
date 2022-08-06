@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/insert" method="POST" style="display: flex; flex-direction : column; width: 12rem;">
+        <input name="name" placeholder="nama"/>
+        <input name="kode" style = "margin-top: 6px;" placeholder="kode"/>
+        <select style ="margin-top: 6px;" name="category">
+            <option value="elektronik">Elektronik</option>
+            <option value="pecah belah">Pecah Belah</option>
+        </select>
+        <button style ="margin-top: 6px;" type="submit">Submit</button>
+    </form>
+    <table style="padding: 0; margin: 0; border: 1px solid black; margin-top: 12px;">
+        <tr style="border: 1px solid black;">
+            <th>NO.</th>
+            <th>Nama</th>
+            <th>Kode</th>
+            <th>Kategori</th>
+            <th>Aksi</th>
+          </tr>
+        <% datas.map( (data, index) => { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= data.name %></td>
+                <td><%= data.kode %></td>
+                <td><%= data.category %></td>
+                <td style="display: flex;"> 
+                    <form action="/show/<%=data.id%>" method="get" >
+                        <button type="submit">Lihat</button>
+                    </form>
+                    <form action="/edit/<%=data.id%>" method="get" >
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form  onsubmit="return confirm('Apa anda yakin untuk menghapus data?')" action="/delete/<%=data.id%>?_method=DELETE" method="POST"> 
+                        <button id="btn_delete" type="submit">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+        <% })%>
+    </table>
+</body>
+</html>
